@@ -7,9 +7,12 @@ body {
   font-family: 'Montserrat', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 .app {
+  display: -ms-grid;
   display: grid;
-  grid-template-rows: 4rem 1fr 4rem;
-  grid-template-columns: 20% 1fr;
+  -ms-grid-rows: 4rem 1fr 4rem;
+      grid-template-rows: 4rem 1fr 4rem;
+  -ms-grid-columns: 20% 1fr;
+      grid-template-columns: 20% 1fr;
   height: 100vh;
 }
 .header,
@@ -21,17 +24,26 @@ body {
   color: #a0a0a0;
 }
 .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  grid-column-start: 1;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
   grid-column-end: -1;
   padding: 0 2rem;
   border-bottom: 1px solid #2a2d30;
 }
 .header .header_left,
 .header .header_right {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .nav {
   display: none;
@@ -50,9 +62,13 @@ body {
   font-weight: 200;
 }
 .nav .nav_menu .nav_item .nav_link .media {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding: 2em;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .nav .nav_menu .nav_item .nav_link .media .media_image {
   width: 60px;
@@ -60,9 +76,9 @@ body {
   margin-right: 1rem;
   border-radius: 0.25rem;
   -o-object-position: center center;
-  object-position: center center;
+     object-position: center center;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .nav .nav_menu .nav_item .nav_link .media .media_content {
   font-size: 16px;
@@ -71,15 +87,85 @@ body {
   padding: 2rem;
   overflow-y: auto;
   overflow-x: hidden;
-  grid-column-start: 1;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
   grid-column-end: -1;
 }
-.footer {
+.main .section {
+  position: relative;
+  min-height: calc(100vh - 4rem - 4rem);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 1px;
+          perspective: 1px;
+}
+.main .section .section_header {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  height: 500px;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-image: url('https://lonelyplanetimages.imgix.net/mastheads/stock-photo-st-stephens-church-112868985.jpg?sharp=10&w=2000');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+.main .section .section_header .section_title {
+  font-size: 3.5rem;
+  font-weight: 200;
+  margin-bottom: .5rem;
+  line-height: 1;
+}
+.main .section .section_header .section_subtitle {
+  font-size: 1.5rem;
+}
+.main .section .section_header .section_controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
   padding: 0 2rem;
-  grid-row: 3;
-  grid-column-start: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.main .section .section_header .user {
+  margin-left: auto;
+  text-align: center;
+  padding-top: 2rem;
+}
+.main .section .section_header .user .user_img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: .5rem;
+  box-shadow: 0 0 38px rgba(0, 0, 0, 0.3);
+}
+.main .section .section_header .user .user_name {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 2rem;
+  -ms-grid-row: 3;
+      grid-row: 3;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
   grid-column-end: -1;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -94,13 +180,69 @@ body {
   margin-left: auto;
   margin-right: 0;
 }
+/* LARGE SCREEN */
 @media screen and (min-width: 1024px) {
   .nav {
     display: block;
-    grid-column-start: 1;
+    -ms-grid-column: 1;
+        grid-column-start: 1;
     grid-column-end: 2;
   }
   .main {
-    grid-column-start: 2;
+    -ms-grid-column: 2;
+        grid-column-start: 2;
   }
+  .main .section_header {
+    -webkit-transform: translateZ(-1px) scale(1.9);
+            transform: translateZ(-1px) scale(1.9);
+  }
+}
+/* COMMON STYLE */
+.btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50px;
+          flex: 0 0 50px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50px;
+  height: 50px;
+  border: 0;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background-color: #FFF;
+  margin: 0 .5rem;
+}
+.arrow {
+  display: inline-block;
+  padding: 3px;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+}
+.arrow-large {
+  padding: 8px;
+  border-width: 0 1px 1px 0;
+}
+.arrow-right {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.arrow-left {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+.arrow-up {
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+}
+.arrow-down {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
